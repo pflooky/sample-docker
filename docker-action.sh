@@ -13,7 +13,7 @@ do
   docker_image=$(echo "$df" | awk -F "/" '{print $(NF-2)"-"$(NF-1)}')
   folder_path=$(echo "$df" | sed -E 's/\.\/|Dockerfile//g')
   echo "Building $docker_image at $folder_path"
-  docker buildx build --platform $platforms -t pflookyy/"$docker_image":latest --push "$df"
+  docker buildx build --platform $platforms -t pflookyy/"$docker_image":latest --push "$folder_path"
 done
 
 echo "Done!"
